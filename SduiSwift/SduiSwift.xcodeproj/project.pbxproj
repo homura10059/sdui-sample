@@ -117,6 +117,9 @@
 				Base,
 			);
 			mainGroup = EDFA51422C00B81200089018;
+			packageReferences = (
+				ED15030E2C0355F200AECD68 /* XCRemoteSwiftPackageReference "microcms-ios-sdk" */,
+			);
 			productRefGroup = EDFA514C2C00B81200089018 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -352,6 +355,17 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		ED15030E2C0355F200AECD68 /* XCRemoteSwiftPackageReference "microcms-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/microcmsio/microcms-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.3.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCVersionGroup section */
 		EDFA51592C00B81400089018 /* SduiSwift.xcdatamodeld */ = {
