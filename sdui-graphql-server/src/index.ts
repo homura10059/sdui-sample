@@ -2,31 +2,61 @@ import { ApolloServer } from '@apollo/server'
 import { startStandaloneServer } from '@apollo/server/standalone'
 import { addMocksToSchema } from '@graphql-tools/mock'
 import { makeExecutableSchema } from '@graphql-tools/schema'
+import casual from 'casual'
 
 const typeDefs = `#graphql
 type Query {
-  hello: String
-  resolved: String
+  sections: [SectionContainer!]
 }
+
+type SectionContainer {
+  id: ID!
+  sectionComponentType: SectionComponentType
+  #  section: Section
+}
+
+enum SectionComponentType {
+  TOPIC_CAROUSEL
+  TOPIC_TRENDING
+}
+
+#union Section = TopicSection
+#
+#type TopicSection {
+#  title: String!
+#  items: [Topic!]!
+#}
+#
+#type Topic {
+#  id: ID!
+#  label: String!
+#  description: String!
+#  imageUrl: String!
+#  createdAt: Int!
+#  isDisabled: Boolean!
+#}
 `
 
 const resolvers = {
   Query: {
-    resolved: () => 'Resolved'
+    sections: () => 'dummy resolver for sections'
   }
 }
 
 const mocks = {
-  Int: () => 6,
-  Float: () => 22.1,
-  String: () => 'Hello'
+  SectionContainer: () => ({
+    id: casual.integer(1, 1000),
+    sectionComponentType: casual.random_element([
+      'TOPIC_CAROUSEL',
+      'TOPIC_TRENDING'
+    ])
+  })
 }
 
 const server = new ApolloServer({
   schema: addMocksToSchema({
     schema: makeExecutableSchema({ typeDefs, resolvers }),
-    mocks,
-    preserveResolvers: true
+    mocks
   })
 })
 
