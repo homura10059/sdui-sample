@@ -5,41 +5,9 @@ import { makeExecutableSchema } from '@graphql-tools/schema'
 import casual from 'casual'
 
 import { readFileSync } from 'node:fs'
+import type { SectionContainer } from './__generated__/graphql'
 
 const typeDefs = readFileSync('./schema.graphql', { encoding: 'utf-8' })
-
-// const typeDefs = `#graphql
-// type Query {
-//   sections: [SectionContainer!]
-// }
-//
-// type SectionContainer {
-//   id: ID!
-//   sectionComponentType: SectionComponentType
-//   #  section: Section
-// }
-//
-// enum SectionComponentType {
-//   TOPIC_CAROUSEL
-//   TOPIC_TRENDING
-// }
-//
-// #union Section = TopicSection
-// #
-// #type TopicSection {
-// #  title: String!
-// #  items: [Topic!]!
-// #}
-// #
-// #type Topic {
-// #  id: ID!
-// #  label: String!
-// #  description: String!
-// #  imageUrl: String!
-// #  createdAt: Int!
-// #  isDisabled: Boolean!
-// #}
-// `
 
 const resolvers = {
   Query: {
@@ -48,12 +16,15 @@ const resolvers = {
 }
 
 const mocks = {
-  SectionContainer: () => ({
-    id: casual.integer(1, 1000),
+  SectionContainer: (): SectionContainer => ({
+    id: casual.integer(1, 1000).toString(),
     sectionComponentType: casual.random_element([
       'TOPIC_CAROUSEL',
       'TOPIC_TRENDING'
-    ])
+    ]),
+    section: {
+      title: casual.title
+    }
   })
 }
 

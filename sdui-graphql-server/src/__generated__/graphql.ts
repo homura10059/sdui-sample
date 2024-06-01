@@ -6,6 +6,7 @@ export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: 
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
 export type MakeEmpty<T extends { [key: string]: unknown }, K extends keyof T> = { [_ in K]?: never };
 export type Incremental<T> = T | { [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never };
+export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: { input: string; output: string; }
@@ -20,6 +21,8 @@ export type Query = {
   sections?: Maybe<Array<SectionContainer>>;
 };
 
+export type Section = TopicSection;
+
 export enum SectionComponentType {
   TopicCarousel = 'TOPIC_CAROUSEL',
   TopicTrending = 'TOPIC_TRENDING'
@@ -28,7 +31,13 @@ export enum SectionComponentType {
 export type SectionContainer = {
   __typename?: 'SectionContainer';
   id: Scalars['ID']['output'];
+  section?: Maybe<Section>;
   sectionComponentType?: Maybe<SectionComponentType>;
+};
+
+export type TopicSection = {
+  __typename?: 'TopicSection';
+  title: Scalars['String']['output'];
 };
 
 
@@ -98,6 +107,10 @@ export type DirectiveResolverFn<TResult = {}, TParent = {}, TContext = {}, TArgs
   info: GraphQLResolveInfo
 ) => TResult | Promise<TResult>;
 
+/** Mapping of union types */
+export type ResolversUnionTypes<_RefType extends Record<string, unknown>> = {
+  Section: ( TopicSection );
+};
 
 
 /** Mapping between all available schema types and the resolvers types */
@@ -105,9 +118,11 @@ export type ResolversTypes = {
   Boolean: ResolverTypeWrapper<Scalars['Boolean']['output']>;
   ID: ResolverTypeWrapper<Scalars['ID']['output']>;
   Query: ResolverTypeWrapper<{}>;
+  Section: ResolverTypeWrapper<ResolversUnionTypes<ResolversTypes>['Section']>;
   SectionComponentType: SectionComponentType;
-  SectionContainer: ResolverTypeWrapper<SectionContainer>;
+  SectionContainer: ResolverTypeWrapper<Omit<SectionContainer, 'section'> & { section?: Maybe<ResolversTypes['Section']> }>;
   String: ResolverTypeWrapper<Scalars['String']['output']>;
+  TopicSection: ResolverTypeWrapper<TopicSection>;
 };
 
 /** Mapping between all available schema types and the resolvers parents */
@@ -115,22 +130,36 @@ export type ResolversParentTypes = {
   Boolean: Scalars['Boolean']['output'];
   ID: Scalars['ID']['output'];
   Query: {};
-  SectionContainer: SectionContainer;
+  Section: ResolversUnionTypes<ResolversParentTypes>['Section'];
+  SectionContainer: Omit<SectionContainer, 'section'> & { section?: Maybe<ResolversParentTypes['Section']> };
   String: Scalars['String']['output'];
+  TopicSection: TopicSection;
 };
 
 export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
   sections?: Resolver<Maybe<Array<ResolversTypes['SectionContainer']>>, ParentType, ContextType>;
 };
 
+export type SectionResolvers<ContextType = any, ParentType extends ResolversParentTypes['Section'] = ResolversParentTypes['Section']> = {
+  __resolveType: TypeResolveFn<'TopicSection', ParentType, ContextType>;
+};
+
 export type SectionContainerResolvers<ContextType = any, ParentType extends ResolversParentTypes['SectionContainer'] = ResolversParentTypes['SectionContainer']> = {
   id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
+  section?: Resolver<Maybe<ResolversTypes['Section']>, ParentType, ContextType>;
   sectionComponentType?: Resolver<Maybe<ResolversTypes['SectionComponentType']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type TopicSectionResolvers<ContextType = any, ParentType extends ResolversParentTypes['TopicSection'] = ResolversParentTypes['TopicSection']> = {
+  title?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
 export type Resolvers<ContextType = any> = {
   Query?: QueryResolvers<ContextType>;
+  Section?: SectionResolvers<ContextType>;
   SectionContainer?: SectionContainerResolvers<ContextType>;
+  TopicSection?: TopicSectionResolvers<ContextType>;
 };
 

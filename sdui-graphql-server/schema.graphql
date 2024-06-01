@@ -5,7 +5,7 @@ type Query {
 type SectionContainer {
     id: ID!
     sectionComponentType: SectionComponentType
-    #  section: Section
+    section: Section
 }
 
 enum SectionComponentType {
@@ -13,13 +13,13 @@ enum SectionComponentType {
     TOPIC_TRENDING
 }
 
-#union Section = TopicSection
-#
-#type TopicSection {
-#  title: String!
-#  items: [Topic!]!
-#}
-#
+union Section = TopicSection
+
+type TopicSection {
+    title: String!
+    #  items: [Topic!]!
+}
+
 #type Topic {
 #  id: ID!
 #  label: String!
