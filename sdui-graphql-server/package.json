@@ -1,23 +1,27 @@
 {
-  "name": "sdui-graphql-server",
-  "version": "1.0.0",
-  "main": "index.js",
-  "license": "MIT",
-  "type": "module",
-  "scripts": {
-    "compile": "tsc",
-    "start": "npm run compile && node ./dist/index.js",
-    "lint": "biome check --apply ./src"
-  },
-  "dependencies": {
-    "@apollo/server": "^4.10.4",
-    "graphql": "^16.8.1"
-  },
-  "devDependencies": {
-    "@biomejs/biome": "^1.7.3",
-    "@graphql-tools/mock": "^9.0.3",
-    "@graphql-tools/schema": "^10.0.4",
-    "@types/node": "^20.13.0",
-    "typescript": "^5.4.5"
-  }
+	"name": "sdui-graphql-server",
+	"version": "1.0.0",
+	"main": "index.js",
+	"license": "MIT",
+	"type": "module",
+	"scripts": {
+		"compile": "tsc",
+		"postinstall": "npm run compile",
+		"start": "npm run compile && node ./dist/index.js",
+		"lint": "biome check --apply ./src"
+	},
+	"dependencies": {
+		"@apollo/server": "^4.10.4",
+		"graphql": "^16.8.1"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^1.7.3",
+		"@graphql-codegen/cli": "^5.0.2",
+		"@graphql-codegen/typescript": "^4.0.7",
+		"@graphql-codegen/typescript-resolvers": "^4.1.0",
+		"@graphql-tools/mock": "^9.0.3",
+		"@graphql-tools/schema": "^10.0.4",
+		"@types/node": "^20.13.0",
+		"typescript": "^5.4.5"
+	}
 }
