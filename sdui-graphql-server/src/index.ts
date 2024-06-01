@@ -4,38 +4,42 @@ import { addMocksToSchema } from '@graphql-tools/mock'
 import { makeExecutableSchema } from '@graphql-tools/schema'
 import casual from 'casual'
 
-const typeDefs = `#graphql
-type Query {
-  sections: [SectionContainer!]
-}
+import { readFileSync } from 'node:fs'
 
-type SectionContainer {
-  id: ID!
-  sectionComponentType: SectionComponentType
-  #  section: Section
-}
+const typeDefs = readFileSync('./schema.graphql', { encoding: 'utf-8' })
 
-enum SectionComponentType {
-  TOPIC_CAROUSEL
-  TOPIC_TRENDING
-}
-
-#union Section = TopicSection
-#
-#type TopicSection {
-#  title: String!
-#  items: [Topic!]!
-#}
-#
-#type Topic {
-#  id: ID!
-#  label: String!
-#  description: String!
-#  imageUrl: String!
-#  createdAt: Int!
-#  isDisabled: Boolean!
-#}
-`
+// const typeDefs = `#graphql
+// type Query {
+//   sections: [SectionContainer!]
+// }
+//
+// type SectionContainer {
+//   id: ID!
+//   sectionComponentType: SectionComponentType
+//   #  section: Section
+// }
+//
+// enum SectionComponentType {
+//   TOPIC_CAROUSEL
+//   TOPIC_TRENDING
+// }
+//
+// #union Section = TopicSection
+// #
+// #type TopicSection {
+// #  title: String!
+// #  items: [Topic!]!
+// #}
+// #
+// #type Topic {
+// #  id: ID!
+// #  label: String!
+// #  description: String!
+// #  imageUrl: String!
+// #  createdAt: Int!
+// #  isDisabled: Boolean!
+// #}
+// `
 
 const resolvers = {
   Query: {
