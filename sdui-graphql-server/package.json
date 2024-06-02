@@ -7,7 +7,7 @@
 	"scripts": {
 		"compile": "yarn codegen & tsc",
 		"postinstall": "npm run compile",
-		"start": "npm run compile && node ./dist/index.js",
+		"start": "npm run compile && node ./dist/src/index.js",
 		"lint": "biome check --apply ./src",
 		"codegen": "graphql-codegen --config codegen.ts"
 	},

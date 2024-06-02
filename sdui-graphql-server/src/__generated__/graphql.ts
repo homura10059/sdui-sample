@@ -35,8 +35,19 @@ export type SectionContainer = {
   sectionComponentType?: Maybe<SectionComponentType>;
 };
 
+export type Topic = {
+  __typename?: 'Topic';
+  createdAt: Scalars['Int']['output'];
+  description: Scalars['String']['output'];
+  id: Scalars['ID']['output'];
+  imageUrl: Scalars['String']['output'];
+  isDisabled: Scalars['Boolean']['output'];
+  label: Scalars['String']['output'];
+};
+
 export type TopicSection = {
   __typename?: 'TopicSection';
+  items: Array<Topic>;
   title: Scalars['String']['output'];
 };
 
@@ -117,11 +128,13 @@ export type ResolversUnionTypes<_RefType extends Record<string, unknown>> = {
 export type ResolversTypes = {
   Boolean: ResolverTypeWrapper<Scalars['Boolean']['output']>;
   ID: ResolverTypeWrapper<Scalars['ID']['output']>;
+  Int: ResolverTypeWrapper<Scalars['Int']['output']>;
   Query: ResolverTypeWrapper<{}>;
   Section: ResolverTypeWrapper<ResolversUnionTypes<ResolversTypes>['Section']>;
   SectionComponentType: SectionComponentType;
   SectionContainer: ResolverTypeWrapper<Omit<SectionContainer, 'section'> & { section?: Maybe<ResolversTypes['Section']> }>;
   String: ResolverTypeWrapper<Scalars['String']['output']>;
+  Topic: ResolverTypeWrapper<Topic>;
   TopicSection: ResolverTypeWrapper<TopicSection>;
 };
 
@@ -129,10 +142,12 @@ export type ResolversTypes = {
 export type ResolversParentTypes = {
   Boolean: Scalars['Boolean']['output'];
   ID: Scalars['ID']['output'];
+  Int: Scalars['Int']['output'];
   Query: {};
   Section: ResolversUnionTypes<ResolversParentTypes>['Section'];
   SectionContainer: Omit<SectionContainer, 'section'> & { section?: Maybe<ResolversParentTypes['Section']> };
   String: Scalars['String']['output'];
+  Topic: Topic;
   TopicSection: TopicSection;
 };
 
@@ -151,7 +166,18 @@ export type SectionContainerResolvers<ContextType = any, ParentType extends Reso
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
+export type TopicResolvers<ContextType = any, ParentType extends ResolversParentTypes['Topic'] = ResolversParentTypes['Topic']> = {
+  createdAt?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
+  description?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
+  imageUrl?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  isDisabled?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
+  label?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
 export type TopicSectionResolvers<ContextType = any, ParentType extends ResolversParentTypes['TopicSection'] = ResolversParentTypes['TopicSection']> = {
+  items?: Resolver<Array<ResolversTypes['Topic']>, ParentType, ContextType>;
   title?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
@@ -160,6 +186,7 @@ export type Resolvers<ContextType = any> = {
   Query?: QueryResolvers<ContextType>;
   Section?: SectionResolvers<ContextType>;
   SectionContainer?: SectionContainerResolvers<ContextType>;
+  Topic?: TopicResolvers<ContextType>;
   TopicSection?: TopicSectionResolvers<ContextType>;
 };
 

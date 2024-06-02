@@ -17,13 +17,22 @@ const resolvers = {
 
 const mocks = {
   SectionContainer: (): SectionContainer => ({
-    id: casual.integer(1, 1000).toString(),
+    id: casual.uuid,
     sectionComponentType: casual.random_element([
       'TOPIC_CAROUSEL',
       'TOPIC_TRENDING'
     ]),
     section: {
-      title: casual.title
+      __typename: 'TopicSection',
+      title: casual.title,
+      items: casual.array_of_digits(7).map(_ => ({
+        id: casual.uuid,
+        label: casual.word,
+        description: casual.description,
+        imageUrl: 'https://placehold.jp/150x150.png',
+        createdAt: casual.unix_time,
+        isDisabled: casual.boolean
+      }))
     }
   })
 }
