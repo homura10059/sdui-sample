@@ -1,0 +1,42 @@
+{
+  "schemaNamespace" : "SduiSwift",
+  "input" : {
+    "operationSearchPaths" : [
+      "**/*.graphql"
+    ],
+    "schemaSearchPaths" : [
+      "./schema.json"
+    ]
+  },
+  "output" : {
+    "testMocks" : {
+      "none" : {
+      }
+    },
+    "schemaTypes" : {
+      "path" : "./SduiSwift/API/Generated",
+      "moduleType" : {
+        "embeddedInTarget" : {
+          "name" : "BackendApi"
+        }
+      }
+    },
+    "operations" : {
+      "inSchemaModule" : {
+      }
+    }
+  },
+  "schemaDownloadConfiguration": { 
+    "downloadMethod": {
+      "introspection": {
+        "endpointURL": "http://localhost:4000/",
+        "includeDeprecatedInputValues": false,
+        "httpMethod": {
+          "POST": {}
+        },
+        "outputFormat": "JSON"
+      }
+    },
+    "outputPath": "./schema.json"
+  }
+}

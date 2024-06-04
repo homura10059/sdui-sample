@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ED1503112C0C8EBB00AECD68 /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = ED1503102C0C8EBB00AECD68 /* Apollo */; };
 		EDFA514F2C00B81200089018 /* SduiSwiftApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFA514E2C00B81200089018 /* SduiSwiftApp.swift */; };
 		EDFA51512C00B81200089018 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFA51502C00B81200089018 /* ContentView.swift */; };
 		EDFA51532C00B81400089018 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDFA51522C00B81400089018 /* Assets.xcassets */; };
@@ -30,12 +31,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED1503112C0C8EBB00AECD68 /* Apollo in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		ED1503122C0C964D00AECD68 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				ED1503132C0C965900AECD68 /* Generated */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		ED1503132C0C965900AECD68 /* Generated */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Generated;
+			sourceTree = "<group>";
+		};
 		EDFA51422C00B81200089018 = {
 			isa = PBXGroup;
 			children = (
@@ -55,6 +72,7 @@
 		EDFA514D2C00B81200089018 /* SduiSwift */ = {
 			isa = PBXGroup;
 			children = (
+				ED1503122C0C964D00AECD68 /* API */,
 				EDFA514E2C00B81200089018 /* SduiSwiftApp.swift */,
 				EDFA51502C00B81200089018 /* ContentView.swift */,
 				EDFA51522C00B81400089018 /* Assets.xcassets */,
@@ -89,6 +107,9 @@
 			dependencies = (
 			);
 			name = SduiSwift;
+			packageProductDependencies = (
+				ED1503102C0C8EBB00AECD68 /* Apollo */,
+			);
 			productName = SduiSwift;
 			productReference = EDFA514B2C00B81200089018 /* SduiSwift.app */;
 			productType = "com.apple.product-type.application";
@@ -118,7 +139,7 @@
 			);
 			mainGroup = EDFA51422C00B81200089018;
 			packageReferences = (
-				ED15030E2C0355F200AECD68 /* XCRemoteSwiftPackageReference "microcms-ios-sdk" */,
+				ED15030F2C0C8EBB00AECD68 /* XCRemoteSwiftPackageReference "apollo-ios" */,
 			);
 			productRefGroup = EDFA514C2C00B81200089018 /* Products */;
 			projectDirPath = "";
@@ -357,15 +378,23 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		ED15030E2C0355F200AECD68 /* XCRemoteSwiftPackageReference "microcms-ios-sdk" */ = {
+		ED15030F2C0C8EBB00AECD68 /* XCRemoteSwiftPackageReference "apollo-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/microcmsio/microcms-ios-sdk";
+			repositoryURL = "https://github.com/apollographql/apollo-ios.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 2.3.1;
+				minimumVersion = 1.12.2;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		ED1503102C0C8EBB00AECD68 /* Apollo */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = ED15030F2C0C8EBB00AECD68 /* XCRemoteSwiftPackageReference "apollo-ios" */;
+			productName = Apollo;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		EDFA51592C00B81400089018 /* SduiSwift.xcdatamodeld */ = {
