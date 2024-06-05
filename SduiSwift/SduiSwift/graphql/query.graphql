@@ -1,0 +1,19 @@
+query AllSections {
+  sections {
+    id
+    sectionComponentType
+    section {
+      ... on TopicSection {
+        title
+        items {
+          id
+          label
+          description
+          imageUrl
+          createdAt
+          isDisabled
+        }
+      }
+    }
+  }
+}

@@ -5,7 +5,7 @@
       "**/*.graphql"
     ],
     "schemaSearchPaths" : [
-      "./schema.json"
+      ".**/schema.json"
     ]
   },
   "output" : {
@@ -37,6 +37,6 @@
         "outputFormat": "JSON"
       }
     },
-    "outputPath": "./schema.json"
+    "outputPath": "./SduiSwift/graphql/schema.json"
   }
 }
