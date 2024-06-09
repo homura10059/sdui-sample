@@ -3,9 +3,9 @@
 
 import ApolloAPI
 
-extension SduiSwift.Unions {
+extension GraphqlAPI.Unions {
   static let Section = Union(
     name: "Section",
-    possibleTypes: [SduiSwift.Objects.TopicSection.self]
+    possibleTypes: [GraphqlAPI.Objects.TopicSection.self]
   )
 }

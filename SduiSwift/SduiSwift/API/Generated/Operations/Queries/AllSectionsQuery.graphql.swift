@@ -3,7 +3,7 @@
 
 @_exported import ApolloAPI
 
-extension SduiSwift {
+extension GraphqlAPI {
   class AllSectionsQuery: GraphQLQuery {
     static let operationName: String = "AllSections"
     static let operationDocument: ApolloAPI.OperationDocument = .init(
@@ -13,11 +13,11 @@ extension SduiSwift {
 
     public init() {}
 
-    struct Data: SduiSwift.SelectionSet {
+    struct Data: GraphqlAPI.SelectionSet {
       let __data: DataDict
       init(_dataDict: DataDict) { __data = _dataDict }
 
-      static var __parentType: ApolloAPI.ParentType { SduiSwift.Objects.Query }
+      static var __parentType: ApolloAPI.ParentType { GraphqlAPI.Objects.Query }
       static var __selections: [ApolloAPI.Selection] { [
         .field("sections", [Section]?.self),
       ] }
@@ -27,30 +27,30 @@ extension SduiSwift {
       /// Section
       ///
       /// Parent Type: `SectionContainer`
-      struct Section: SduiSwift.SelectionSet {
+      struct Section: GraphqlAPI.SelectionSet {
         let __data: DataDict
         init(_dataDict: DataDict) { __data = _dataDict }
 
-        static var __parentType: ApolloAPI.ParentType { SduiSwift.Objects.SectionContainer }
+        static var __parentType: ApolloAPI.ParentType { GraphqlAPI.Objects.SectionContainer }
         static var __selections: [ApolloAPI.Selection] { [
           .field("__typename", String.self),
-          .field("id", SduiSwift.ID.self),
-          .field("sectionComponentType", GraphQLEnum<SduiSwift.SectionComponentType>?.self),
+          .field("id", GraphqlAPI.ID.self),
+          .field("sectionComponentType", GraphQLEnum<GraphqlAPI.SectionComponentType>?.self),
           .field("section", Section?.self),
         ] }
 
-        var id: SduiSwift.ID { __data["id"] }
-        var sectionComponentType: GraphQLEnum<SduiSwift.SectionComponentType>? { __data["sectionComponentType"] }
+        var id: GraphqlAPI.ID { __data["id"] }
+        var sectionComponentType: GraphQLEnum<GraphqlAPI.SectionComponentType>? { __data["sectionComponentType"] }
         var section: Section? { __data["section"] }
 
         /// Section.Section
         ///
         /// Parent Type: `Section`
-        struct Section: SduiSwift.SelectionSet {
+        struct Section: GraphqlAPI.SelectionSet {
           let __data: DataDict
           init(_dataDict: DataDict) { __data = _dataDict }
 
-          static var __parentType: ApolloAPI.ParentType { SduiSwift.Unions.Section }
+          static var __parentType: ApolloAPI.ParentType { GraphqlAPI.Unions.Section }
           static var __selections: [ApolloAPI.Selection] { [
             .field("__typename", String.self),
             .inlineFragment(AsTopicSection.self),
@@ -61,12 +61,12 @@ extension SduiSwift {
           /// Section.Section.AsTopicSection
           ///
           /// Parent Type: `TopicSection`
-          struct AsTopicSection: SduiSwift.InlineFragment {
+          struct AsTopicSection: GraphqlAPI.InlineFragment {
             let __data: DataDict
             init(_dataDict: DataDict) { __data = _dataDict }
 
             typealias RootEntityType = AllSectionsQuery.Data.Section.Section
-            static var __parentType: ApolloAPI.ParentType { SduiSwift.Objects.TopicSection }
+            static var __parentType: ApolloAPI.ParentType { GraphqlAPI.Objects.TopicSection }
             static var __selections: [ApolloAPI.Selection] { [
               .field("title", String.self),
               .field("items", [Item].self),
@@ -78,14 +78,14 @@ extension SduiSwift {
             /// Section.Section.AsTopicSection.Item
             ///
             /// Parent Type: `Topic`
-            struct Item: SduiSwift.SelectionSet {
+            struct Item: GraphqlAPI.SelectionSet {
               let __data: DataDict
               init(_dataDict: DataDict) { __data = _dataDict }
 
-              static var __parentType: ApolloAPI.ParentType { SduiSwift.Objects.Topic }
+              static var __parentType: ApolloAPI.ParentType { GraphqlAPI.Objects.Topic }
               static var __selections: [ApolloAPI.Selection] { [
                 .field("__typename", String.self),
-                .field("id", SduiSwift.ID.self),
+                .field("id", GraphqlAPI.ID.self),
                 .field("label", String.self),
                 .field("description", String.self),
                 .field("imageUrl", String.self),
@@ -93,7 +93,7 @@ extension SduiSwift {
                 .field("isDisabled", Bool.self),
               ] }
 
-              var id: SduiSwift.ID { __data["id"] }
+              var id: GraphqlAPI.ID { __data["id"] }
               var label: String { __data["label"] }
               var description: String { __data["description"] }
               var imageUrl: String { __data["imageUrl"] }

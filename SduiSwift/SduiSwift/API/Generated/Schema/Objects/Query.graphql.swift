@@ -3,7 +3,7 @@
 
 import ApolloAPI
 
-extension SduiSwift.Objects {
+extension GraphqlAPI.Objects {
   static let Query = ApolloAPI.Object(
     typename: "Query",
     implementedInterfaces: []

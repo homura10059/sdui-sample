@@ -3,7 +3,7 @@
 
 import ApolloAPI
 
-extension SduiSwift.Objects {
+extension GraphqlAPI.Objects {
   static let TopicSection = ApolloAPI.Object(
     typename: "TopicSection",
     implementedInterfaces: []

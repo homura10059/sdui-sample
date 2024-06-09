@@ -3,7 +3,7 @@
 
 import ApolloAPI
 
-extension SduiSwift {
+extension GraphqlAPI {
   enum SectionComponentType: String, EnumType {
     case topicCarousel = "TOPIC_CAROUSEL"
     case topicTrending = "TOPIC_TRENDING"

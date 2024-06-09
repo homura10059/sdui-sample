@@ -1,5 +1,5 @@
 {
-  "schemaNamespace" : "SduiSwift",
+  "schemaNamespace" : "GraphqlAPI",
   "input" : {
     "operationSearchPaths" : [
       "**/*.graphql"
@@ -14,7 +14,7 @@
       }
     },
     "schemaTypes" : {
-      "path" : "./SduiSwift/API/Generated",
+      "path" : "./Generated",
       "moduleType" : {
         "embeddedInTarget" : {
           "name" : "BackendApi"
@@ -37,6 +37,6 @@
         "outputFormat": "JSON"
       }
     },
-    "outputPath": "./SduiSwift/graphql/schema.json"
+    "outputPath": "./graphql/schema.json"
   }
 }

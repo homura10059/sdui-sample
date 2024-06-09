@@ -3,36 +3,36 @@
 
 import ApolloAPI
 
-protocol SduiSwift_SelectionSet: ApolloAPI.SelectionSet & ApolloAPI.RootSelectionSet
-where Schema == SduiSwift.SchemaMetadata {}
+protocol GraphqlAPI_SelectionSet: ApolloAPI.SelectionSet & ApolloAPI.RootSelectionSet
+where Schema == GraphqlAPI.SchemaMetadata {}
 
-protocol SduiSwift_InlineFragment: ApolloAPI.SelectionSet & ApolloAPI.InlineFragment
-where Schema == SduiSwift.SchemaMetadata {}
+protocol GraphqlAPI_InlineFragment: ApolloAPI.SelectionSet & ApolloAPI.InlineFragment
+where Schema == GraphqlAPI.SchemaMetadata {}
 
-protocol SduiSwift_MutableSelectionSet: ApolloAPI.MutableRootSelectionSet
-where Schema == SduiSwift.SchemaMetadata {}
+protocol GraphqlAPI_MutableSelectionSet: ApolloAPI.MutableRootSelectionSet
+where Schema == GraphqlAPI.SchemaMetadata {}
 
-protocol SduiSwift_MutableInlineFragment: ApolloAPI.MutableSelectionSet & ApolloAPI.InlineFragment
-where Schema == SduiSwift.SchemaMetadata {}
+protocol GraphqlAPI_MutableInlineFragment: ApolloAPI.MutableSelectionSet & ApolloAPI.InlineFragment
+where Schema == GraphqlAPI.SchemaMetadata {}
 
-extension SduiSwift {
-  typealias SelectionSet = SduiSwift_SelectionSet
+extension GraphqlAPI {
+  typealias SelectionSet = GraphqlAPI_SelectionSet
 
-  typealias InlineFragment = SduiSwift_InlineFragment
+  typealias InlineFragment = GraphqlAPI_InlineFragment
 
-  typealias MutableSelectionSet = SduiSwift_MutableSelectionSet
+  typealias MutableSelectionSet = GraphqlAPI_MutableSelectionSet
 
-  typealias MutableInlineFragment = SduiSwift_MutableInlineFragment
+  typealias MutableInlineFragment = GraphqlAPI_MutableInlineFragment
 
   enum SchemaMetadata: ApolloAPI.SchemaMetadata {
     static let configuration: ApolloAPI.SchemaConfiguration.Type = SchemaConfiguration.self
 
     static func objectType(forTypename typename: String) -> ApolloAPI.Object? {
       switch typename {
-      case "Query": return SduiSwift.Objects.Query
-      case "SectionContainer": return SduiSwift.Objects.SectionContainer
-      case "TopicSection": return SduiSwift.Objects.TopicSection
-      case "Topic": return SduiSwift.Objects.Topic
+      case "Query": return GraphqlAPI.Objects.Query
+      case "SectionContainer": return GraphqlAPI.Objects.SectionContainer
+      case "TopicSection": return GraphqlAPI.Objects.TopicSection
+      case "Topic": return GraphqlAPI.Objects.Topic
       default: return nil
       }
     }
