@@ -18,7 +18,7 @@ export type Scalars = {
 
 export type Query = {
   __typename?: 'Query';
-  sections?: Maybe<Array<SectionContainer>>;
+  sections: Array<SectionContainer>;
 };
 
 export type Section = TopicSection;
@@ -152,7 +152,7 @@ export type ResolversParentTypes = {
 };
 
 export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
-  sections?: Resolver<Maybe<Array<ResolversTypes['SectionContainer']>>, ParentType, ContextType>;
+  sections?: Resolver<Array<ResolversTypes['SectionContainer']>, ParentType, ContextType>;
 };
 
 export type SectionResolvers<ContextType = any, ParentType extends ResolversParentTypes['Section'] = ResolversParentTypes['Section']> = {
