@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		ED1503112C0C8EBB00AECD68 /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = ED1503102C0C8EBB00AECD68 /* Apollo */; };
+		ED73B32E2C1F05C100BCE768 /* SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED73B32D2C1F05C100BCE768 /* SectionView.swift */; };
 		EDBBF52F2C15C9C5008647C1 /* apollo-codegen-config.json in Resources */ = {isa = PBXBuildFile; fileRef = EDBBF52E2C15C9C5008647C1 /* apollo-codegen-config.json */; };
 		EDBBF54C2C15CA09008647C1 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBBF5492C15C9CC008647C1 /* APIClient.swift */; };
 		EDBBF5612C15CCB8008647C1 /* AllSectionsQuery.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBBF54E2C15CCB8008647C1 /* AllSectionsQuery.graphql.swift */; };
@@ -31,6 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		ED73B32D2C1F05C100BCE768 /* SectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionView.swift; sourceTree = "<group>"; };
 		EDBBF52E2C15C9C5008647C1 /* apollo-codegen-config.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "apollo-codegen-config.json"; sourceTree = "<group>"; };
 		EDBBF5332C15C9CC008647C1 /* query.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = query.graphql; sourceTree = "<group>"; };
 		EDBBF5342C15C9CC008647C1 /* schema.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
@@ -68,6 +70,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		ED73B32A2C1F056600BCE768 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				ED73B32D2C1F05C100BCE768 /* SectionView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		EDBBF52D2C15C9AD008647C1 /* API */ = {
 			isa = PBXGroup;
 			children = (
@@ -181,6 +191,7 @@
 		EDFA514D2C00B81200089018 /* SduiSwift */ = {
 			isa = PBXGroup;
 			children = (
+				ED73B32A2C1F056600BCE768 /* Views */,
 				EDBBF52D2C15C9AD008647C1 /* API */,
 				EDFA514E2C00B81200089018 /* SduiSwiftApp.swift */,
 				EDFA51502C00B81200089018 /* ContentView.swift */,
@@ -280,6 +291,7 @@
 			files = (
 				EDBBF56D2C15D305008647C1 /* Section.swift in Sources */,
 				EDBBF5682C15CCB8008647C1 /* Section.graphql.swift in Sources */,
+				ED73B32E2C1F05C100BCE768 /* SectionView.swift in Sources */,
 				EDBBF5622C15CCB8008647C1 /* ID.swift in Sources */,
 				EDBBF56B2C15CCB8008647C1 /* GraphqlAPI.graphql.swift in Sources */,
 				EDFA515B2C00B81400089018 /* SduiSwift.xcdatamodeld in Sources */,
