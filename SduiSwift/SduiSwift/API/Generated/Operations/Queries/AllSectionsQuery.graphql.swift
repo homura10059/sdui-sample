@@ -35,13 +35,13 @@ extension GraphqlAPI {
         static var __selections: [ApolloAPI.Selection] { [
           .field("__typename", String.self),
           .field("id", GraphqlAPI.ID.self),
-          .field("sectionComponentType", GraphQLEnum<GraphqlAPI.SectionComponentType>?.self),
-          .field("section", Section?.self),
+          .field("sectionComponentType", GraphQLEnum<GraphqlAPI.SectionComponentType>.self),
+          .field("section", Section.self),
         ] }
 
         var id: GraphqlAPI.ID { __data["id"] }
-        var sectionComponentType: GraphQLEnum<GraphqlAPI.SectionComponentType>? { __data["sectionComponentType"] }
-        var section: Section? { __data["section"] }
+        var sectionComponentType: GraphQLEnum<GraphqlAPI.SectionComponentType> { __data["sectionComponentType"] }
+        var section: Section { __data["section"] }
 
         /// Section.Section
         ///

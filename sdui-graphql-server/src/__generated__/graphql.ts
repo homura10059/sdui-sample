@@ -31,8 +31,8 @@ export enum SectionComponentType {
 export type SectionContainer = {
   __typename?: 'SectionContainer';
   id: Scalars['ID']['output'];
-  section?: Maybe<Section>;
-  sectionComponentType?: Maybe<SectionComponentType>;
+  section: Section;
+  sectionComponentType: SectionComponentType;
 };
 
 export type Topic = {
@@ -132,7 +132,7 @@ export type ResolversTypes = {
   Query: ResolverTypeWrapper<{}>;
   Section: ResolverTypeWrapper<ResolversUnionTypes<ResolversTypes>['Section']>;
   SectionComponentType: SectionComponentType;
-  SectionContainer: ResolverTypeWrapper<Omit<SectionContainer, 'section'> & { section?: Maybe<ResolversTypes['Section']> }>;
+  SectionContainer: ResolverTypeWrapper<Omit<SectionContainer, 'section'> & { section: ResolversTypes['Section'] }>;
   String: ResolverTypeWrapper<Scalars['String']['output']>;
   Topic: ResolverTypeWrapper<Topic>;
   TopicSection: ResolverTypeWrapper<TopicSection>;
@@ -145,7 +145,7 @@ export type ResolversParentTypes = {
   Int: Scalars['Int']['output'];
   Query: {};
   Section: ResolversUnionTypes<ResolversParentTypes>['Section'];
-  SectionContainer: Omit<SectionContainer, 'section'> & { section?: Maybe<ResolversParentTypes['Section']> };
+  SectionContainer: Omit<SectionContainer, 'section'> & { section: ResolversParentTypes['Section'] };
   String: Scalars['String']['output'];
   Topic: Topic;
   TopicSection: TopicSection;
@@ -161,8 +161,8 @@ export type SectionResolvers<ContextType = any, ParentType extends ResolversPare
 
 export type SectionContainerResolvers<ContextType = any, ParentType extends ResolversParentTypes['SectionContainer'] = ResolversParentTypes['SectionContainer']> = {
   id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
-  section?: Resolver<Maybe<ResolversTypes['Section']>, ParentType, ContextType>;
-  sectionComponentType?: Resolver<Maybe<ResolversTypes['SectionComponentType']>, ParentType, ContextType>;
+  section?: Resolver<ResolversTypes['Section'], ParentType, ContextType>;
+  sectionComponentType?: Resolver<ResolversTypes['SectionComponentType'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 

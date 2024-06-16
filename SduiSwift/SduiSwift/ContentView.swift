@@ -13,8 +13,8 @@ struct ContentView: View {
     @State private var sections: [Section] = []
 
     var body: some View {
-        List(sections, id: \.self) { sections in
-            Text(sections.title)
+        List(sections, id: \.self) { section in
+            Text(section.title)
         }
             .onAppear(perform: {
             Task {

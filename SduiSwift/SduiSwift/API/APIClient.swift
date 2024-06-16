@@ -29,11 +29,12 @@ public final class APIClient {
                         continution.resume(returning: [])
                         return
                     }
-
-                    let sections = data.sections.compactMap { item in
-                        item.section?.asTopicSection
-                    } .map() { topic in
-                        Section(title: topic.title)
+                    let sections = data.sections.compactMap() { item in
+                        let componentType = ComponentType(from: item.sectionComponentType)
+                        let res = item.section.asTopicSection.map() { topic in
+                            Section(title: topic.title, componentType: componentType)
+                        }
+                        return res
                     }
                     continution.resume(returning: sections)
 
