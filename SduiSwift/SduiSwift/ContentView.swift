@@ -14,7 +14,7 @@ struct ContentView: View {
 
     var body: some View {
         List(sections, id: \.self) { sections in
-            Text(sections.id)
+            Text(sections.title)
         }
             .onAppear(perform: {
             Task {

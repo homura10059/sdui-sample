@@ -25,12 +25,17 @@ public final class APIClient {
             apollo.fetch(query: GraphqlAPI.AllSectionsQuery()) { result in
                 switch result {
                 case .success(let val):
-                    let converted = val.data?.sections.map() { sections in
-                        sections.map() { section in
-                            Section(id: section.id)
-                        }
+                    guard let data = val.data else {
+                        continution.resume(returning: [])
+                        return
                     }
-                    continution.resume(returning: converted ?? [])
+
+                    let sections = data.sections.compactMap { item in
+                        item.section?.asTopicSection
+                    } .map() { topic in
+                        Section(title: topic.title)
+                    }
+                    continution.resume(returning: sections)
 
                 case .failure(let error):
                     continution.resume(throwing: error)

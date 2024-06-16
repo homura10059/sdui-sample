@@ -19,10 +19,10 @@ extension GraphqlAPI {
 
       static var __parentType: ApolloAPI.ParentType { GraphqlAPI.Objects.Query }
       static var __selections: [ApolloAPI.Selection] { [
-        .field("sections", [Section]?.self),
+        .field("sections", [Section].self),
       ] }
 
-      var sections: [Section]? { __data["sections"] }
+      var sections: [Section] { __data["sections"] }
 
       /// Section
       ///

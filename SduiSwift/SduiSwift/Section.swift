@@ -8,5 +8,5 @@
 import Foundation
 
 public struct Section: Hashable {
-    var id: String
+    var title: String
 }
